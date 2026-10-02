@@ -1,11 +1,52 @@
-.myObsPulse {
-  animation: myObsPulse 2s infinite ease-in-out;
-}
+/* ==========================================================================
+   Animations & Keyframes
+   ========================================================================== */
 
 @keyframes myObsPulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.2); }
   100% { transform: scale(1); }
+}
+
+@-webkit-keyframes AnimationName {
+  0% { background-position: 20% 0%; }
+  50% { background-position: 80% 0%; }
+  100% { background-position: 20% 0%; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.9); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(0.9); }
+}
+
+@keyframes gradient {
+  0% { background-position: 100% 100%; }
+  100% { background-position: 100% 0%; }
+}
+
+@keyframes slideInAtestado {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOutAtestado {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(20px); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.33); }
+  80%, 100% { opacity: 0; }
+}
+
+
+/* ==========================================================================
+   Atestados & Elementos Gerais
+   ========================================================================== */
+
+.myObsPulse {
+  animation: myObsPulse 2s infinite ease-in-out;
 }
 
 .meuAppAtestadoComentario {
@@ -24,7 +65,7 @@ table.atestadoTableTDMiddle td {
   vertical-align: middle !important;
 }
 
-#atestadoButtonObservacao.btn {
+div#atestadoButtonObservacao.btn {
   color: #fff;
   width: fit-content;
   background: #c31010;
@@ -37,10 +78,1304 @@ table.atestadoTableTDMiddle td {
 .meusBilhetes {
   position: fixed;
   z-index: 99;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   width: 100%;
   height: 100%;
   background: rgb(68, 68, 68);
   color: rgb(255, 255, 255);
+}
+
+tr.atestadoLinearGradient:has(button.btn-danger),
+div[colocadoobs],
+div.atestadoLinearGradient,
+table#table-transition-aulas tr.atestadoLinearGradient {
+  color: #fff;
+  background: linear-gradient(92deg, #00BCD4e8, #FF5722e8, #9C27B0e8);
+  background-size: 1000% 1000%;
+  -webkit-animation: AnimationName 4s ease infinite;
+  -moz-animation: AnimationName 4s ease infinite;
+  animation: AnimationName 4s ease infinite;
+}
+
+div.atestadoLinearGradientDatas {
+  box-shadow: 0 1px 5px #fff;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  color: #fff !important;
+  background: linear-gradient(92deg, #00BCD4e8, #FF5722e8, #9C27B0e8);
+  background-size: 1000% 1000%;
+  -webkit-animation: AnimationName 4s ease infinite;
+  -moz-animation: AnimationName 4s ease infinite;
+  animation: AnimationName 4s ease infinite;
+
+  a.btn.btn-outline-primary.mb-1 {
+    color: #fff !important;
+    border-radius: 10px 10px 3px 3px;
+    border: solid 1px #fff;
+  }
+}
+
+div#atestadoContaJustificadas {
+  z-index: 2;
+  position: fixed;
+  bottom: 10px;
+  right: calc(50% - 1em);
+  text-align: center;
+  min-width: 2.5em;
+  border: solid 2px #fff;
+  text-shadow: 0 0.5px 0.5px #000;
+  font-weight: bold;
+  font-size: 1.4em;
+  background: #81383894;
+  color: #fff;
+  border-radius: 10px;
+  user-select: none;
+}
+
+div.atestadoSlideAlunosTable {
+  transition: all 0.5s ease-in-out;
+  filter: opacity(0.3);
+  cursor: pointer;
+  width: 1.5em;
+  position: absolute;
+  float: right;
+  right: 1.5em;
+  border-radius: 50%;
+  background: #ffffff96;
+  color: #000;
+  height: 1.5em;
+  font-size: 0.8em;
+  bottom: -1.2em;
+  padding: 0.3em;
+  display: inline-flex;
+  align-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  &:hover {
+    filter: opacity(1) !important;
+  }
+}
+
+
+/* ==========================================================================
+   Tabelas de Alunos e Aulas
+   ========================================================================== */
+
+table#table-transition-alunos.myShowAlunos {
+  td[aria-colindex='2'] {
+    color: #fff;
+    position: absolute;
+    background: #00000096;
+    z-index: 1;
+    padding: 0 5px;
+    border-radius: 0 0 5px 0;
+    height: 1.3em;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-left: 0em;
+
+    div {
+      padding: 0 5px;
+      width: 200px;
+      text-wrap: nowrap;
+      flex-wrap: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  td[aria-colindex='1'] {
+    min-width: 1.1em;
+    max-width: 1.1em;
+    width: 1.1em;
+    text-align: center;
+    background: #101010;
+    color: #fff;
+  }
+
+  td {
+    padding: 1.3em 0 0 0;
+  }
+
+  thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #495057;
+    padding: 0;
+    text-align: center;
+  }
+}
+
+table#table-transition-alunos.myDate {
+  font-size: 0.8em;
+  position: relative;
+  float: left;
+  height: 0;
+
+  div {
+    width: 3em;
+    position: absolute;
+    left: 0;
+    bottom: -3.5em;
+  }
+}
+
+table.myShowAlunos tr.meuMovimentado {
+  td[aria-colindex="1"],
+  td[aria-colindex="2"] {
+    background: #939393 !important;
+    color: #b5b5b5 !important;
+  }
+
+  button {
+    filter: opacity(0.5);
+  }
+}
+
+table#table-transition-aulas tr.atestadoLinearGradient {
+  border-radius: 10px;
+  margin-bottom: 3px;
+
+  a {
+    background: #ffffff69;
+    border: solid 1px #fff;
+  }
+}
+
+tr.atestadoLinearGradient:has(button.btn-info):has(i.btn-outline-secondary) {
+  background: linear-gradient(92deg, #89642be8, #909f10e8, #9C27B0e8);
+  background-size: 1000% 1000%;
+  -webkit-animation: AnimationName 4s ease infinite;
+  -moz-animation: AnimationName 4s ease infinite;
+  animation: AnimationName 4s ease infinite;
+}
+
+tr.atestadoLinearGradient:has(button.btn-info):has(i.btn-outline-primary) {
+  background: linear-gradient(92deg, #00BCD4e8, #22ff3de8, #9C27B0e8);
+  background-size: 1000% 1000%;
+  -webkit-animation: AnimationName 4s ease infinite;
+  -moz-animation: AnimationName 4s ease infinite;
+  animation: AnimationName 4s ease infinite;
+}
+
+tr.atestadoLinearGradient:not(:has(.btn-danger)) i.btn-outline-secondary {
+  color: #e10c51;
+  animation-name: pulse;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+
+/* ==========================================================================
+   Menu Inferior & Listas
+   ========================================================================== */
+
+.myObsButton {
+  background: transparent;
+  font-size: 1em;
+  text-shadow: 0 0.5px #fff, 0 -0.5px #fff;
+}
+
+div#atestadosBottomAdvice,
+div#atestadosAlunosListButton {
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+div#atestadosAlunosListButton {
+  justify-content: flex-end;
+  width: fit-content;
+  right: 0.5em;
+  bottom: 6em;
+
+  div.atestadosBottomAdvice_ {
+    cursor: pointer;
+    user-select: none;
+    border-radius: 50%;
+    text-shadow: 0 1px 1px #000;
+    line-height: 1.2em;
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 1.5em;
+    text-align: center;
+    background: #b3a77fd4;
+    color: #fff;
+    border-top: solid 1px #cbbbbbd4;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    padding: 0 5px;
+    box-shadow: 0 -1px 5px #908484d4;
+  }
+}
+
+div.atestadosBottomAdvice_ {
+  user-select: none;
+  text-shadow: 0 1px 1px #000;
+  line-height: 1.2em;
+  width: fit-content;
+  text-align: center;
+  font-size: 1em;
+  color: #fff;
+  border-radius: 15px 15px 0 0;
+  border-top: solid 1px #f1f1f1d4;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  padding: 0 5px;
+  box-shadow: 0 -1px 5px #908484d4;
+
+  span {
+    color: #000;
+    padding: 0 5px;
+    font-size: 1.4em;
+  }
+}
+
+div#atestadosAlunosList {
+  font-family: Barlow;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #333333f5;
+  background-image: url("data:image/webp;base64,UklGRmwAAABXRUJQVlA4WAoAAAAQAAAABAAABAAAQUxQSBYAAAABDzAhERFCadtIbAwea/+oRfQ/GvwBVlA4IDAAAACQAQCdASoFAAUAAgA0JaQAApplHeAA/tPpPS2F/PjfDX7Mr9vZ2Xy98v/pAAAAAAA=");
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  color: #fff;
+}
+
+.atestadosTopMenu {
+  user-select: none;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 1px 5px #222;
+  font-size: 1.2em;
+  padding: 5px 0 0 0;
+  background: #222;
+  text-align: center;
+  margin-bottom: 4px;
+  vertical-align: middle;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.atestadosOptionMenu {
+  cursor: pointer;
+  color: #000;
+  filter: opacity(0.5);
+  user-select: none;
+  border-top: solid 1px #000;
+  border-bottom: solid 1px #000;
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    border-top: solid 1px #e54444;
+    border-bottom: solid 1px #e54444;
+    border-radius: 5px;
+    filter: opacity(1);
+  }
+}
+
+div#atestadosAlunosBottomMenu {
+  background: #892f6d9e;
+  bottom: 8px;
+  width: 90%;
+  margin: -4px auto;
+  max-width: 400px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 5px #fff;
+  padding: 15px;
+  border-radius: 0 0 10px 10px;
+  background: url(https://lh3.googleusercontent.com/d/1_3OKLksR8-VPkwT6dYdXHR8_qkNWlTVA?export=download&format=jpg);
+  background-position-y: center;
+  background-size: cover;
+}
+
+.atestadosAlunosListContainer {
+  height: 0;
+  overflow: auto;
+  font-size: 0.8em;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 1px 5px #fff;
+  border-radius: 0 0 10px 10px;
+}
+
+button.presencaJ {
+  box-shadow: 0 1px 5px #fff;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff !important;
+  background: linear-gradient(92deg, #147682e8, #22ff35e8, #27b092e8);
+  background-size: 1000% 1000%;
+  -webkit-animation: AnimationName 4s ease infinite;
+  -moz-animation: AnimationName 4s ease infinite;
+  animation: AnimationName 4s ease infinite;
+}
+
+button.faltaJ {
+  box-shadow: 0 1px 5px #fff;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff !important;
+  background: linear-gradient(92deg, #821446e8, #ff2286e8, #c5aa1be8);
+  background-size: 1000% 1000%;
+  -webkit-animation: AnimationName 4s ease infinite;
+  -moz-animation: AnimationName 4s ease infinite;
+  animation: AnimationName 4s ease infinite;
+}
+
+
+/* ==========================================================================
+   Modal de Notas & Inputs
+   ========================================================================== */
+
+.meuPegarNotas {
+  float: right;
+  position: relative;
+  right: 1.8em;
+  border-radius: 5px 0 0 5px;
+  border: none;
+  outline: none;
+
+  &[orange] {
+    background: #ff0046;
+  }
+}
+
+div#meuModalLoading {
+  font-family: Barlow;
+  font-size: 0.9em;
+  border-radius: 8px 0 0 0;
+  position: fixed;
+  top: 3.7em;
+  right: -160px;
+  display: none;
+  z-index: 99;
+  background: #2222229e;
+  width: 200px;
+  height: 100vh;
+  transition: all 0.5s ease-in-out;
+
+  .minhasNotas,
+  .notaPorDados {
+    &::-webkit-scrollbar-thumb {
+      background: red;
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #222;
+    }
+  }
+
+  .myTopBar,
+  .selectContainer {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1);
+    transform: translatex(2.3em);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .selectContainer select {
+    background: #222;
+    color: #fff;
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    transform: translateX(-2em);
+    pointer-events: none;
+  }
+
+  input {
+    font-weight: bold;
+    border: none;
+    border-radius: 0 0 10px 3px;
+    min-width: 99%;
+  }
+
+  &:hover {
+    background: #222;
+    top: 0;
+    right: 0px;
+
+    input[func="meuFormatNota"] {
+      text-align: center;
+    }
+
+    button.btn.colocarnotas {
+      display: block;
+    }
+
+    .minhasNotas {
+      max-height: calc(100vh - 10.2em);
+      height: calc(100vh - 10.2em);
+    }
+
+    .myTopBar {
+      display: flex;
+      transform: scale(1);
+    }
+
+    &:has(.notaPorDados:not(:empty):focus-within) {
+      .confMinhaAtividade {
+        margin-top: 0;
+      }
+      .umaAtividade {
+        scale: 0;
+      }
+    }
+  }
+
+  &:has(.notaPorDados) {
+    button.btn.colocarnotas {
+      display: none;
+    }
+  }
+
+  &:has(.notaPorDados):has(.minhaNotaAluno, .minhaNotaTemErro) {
+    button.btn.colocarnotas {
+      display: block;
+    }
+    .limparNotasContainer {
+      display: inline-block;
+    }
+  }
+}
+
+.myTopBarTitle,
+.porTabelaDesc,
+.meuValorAtividade,
+.meuAlunoNumber,
+.meuAlunoNome {
+  &:not(button, a) {
+    pointer-events: none;
+  }
+  user-select: none;
+}
+
+.minhaNotaTemErro {
+  background: red;
+  color: #fff;
+  padding: 5px;
+  text-align: center;
+  border-radius: 5px;
+  width: 99%;
+  display: block;
+  margin: 5px auto;
+  font-weight: bold;
+}
+
+button.btn.colocarnotas {
+  display: none;
+  color: #fff;
+  background: purple;
+  width: 90%;
+  margin: 2em auto;
+  margin-top: 2px;
+}
+
+.minhasNotas {
+  background: #3333338c !important;
+  height: calc(100vh - 10.1em);
+  max-height: calc(100vh - 10.1em);
+  overflow: auto;
+  border-top: solid 1px #fff;
+  border-bottom: solid 1px #fff;
+  transition: all 0.5s ease-in-out;
+  padding: 5px;
+}
+
+.myModalContainer {
+  border-radius: 8px 0 0 0;
+  width: 100%;
+  height: 100vh;
+  background: #2222229e;
+  box-shadow: -0.5px 0 9px 0px #222;
+  background-image: url(../img/menu-bg.0e341888.jpg);
+  background-size: cover;
+
+  &:has(input[media="impossible"]) button.colocarnotas {
+    pointer-events: none;
+    filter: opacity(0.2) grayscale(1);
+  }
+
+  &:has(.meuEncontrado.erro) {
+    background: #f8000059 !important;
+  }
+
+  &:has(.meuEncontrado.load) {
+    animation: gradient 5s ease infinite alternate;
+    background-size: 400% 400% !important;
+    background-blend-mode: difference;
+  }
+}
+
+.myTopBar {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  background: #222;
+  color: #fff;
+  font-size: 1.2em;
+  padding: 0.3em;
+}
+
+#meuPegarNotas,
+#oButtonUmaNotas,
+#meuPegarListaParaSheets {
+  box-shadow: 0.5px 0.5px 5px #222;
+  font-size: 1.2em;
+  background: #ff0046;
+  border: none;
+  position: fixed;
+  bottom: 5em;
+  right: 0;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: 1.8em;
+  height: 1.8em;
+  transition: all 0.5s ease-in-out;
+  filter: opacity(0.5);
+
+  &:hover {
+    filter: opacity(1);
+  }
+}
+
+#oButtonUmaNotas {
+  background: #ff0046;
+  bottom: 7em;
+}
+
+#meuPegarListaParaSheets {
+  background: #ff0046;
+  bottom: 9em;
+}
+
+button[func="processarDados"] {
+  width: 50%;
+  margin: 2px auto;
+  display: inline-block;
+  background: purple;
+  color: #fff;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  padding: 3px 0;
+}
+
+input.meuValorAtividade {
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+  min-width: 99% !important;
+  border-radius: 3px !important;
+  color: #fff;
+  background: #222;
+}
+
+div.notaPorDados {
+  height: 40px;
+  max-height: 51px;
+  resize: none;
+  width: 98%;
+  border-radius: 0 0 5px 5px;
+  font-size: 0.5em !important;
+  display: inline-block;
+  margin: 0 1%;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  background: #efc5f3;
+
+  &:empty {
+    background: #f3f3c5;
+
+    &:before {
+      content: "COLUNAS: (1) Número E (2) Nota";
+      font-size: 1.4em;
+      text-align: center;
+      width: 100%;
+      display: inline-block;
+      background: yellow;
+      font-weight: bold;
+    }
+  }
+
+  table {
+    table-layout: auto !important;
+    font-size: 0.8em !important;
+    width: 100% !important;
+
+    td {
+      padding: 2px !important;
+      font-size: 0.8em !important;
+      text-align: left !important;
+      vertical-align: top !important;
+    }
+  }
+
+  td:first-child,
+  td:last-child {
+    width: 20% !important;
+    font-weight: bold !important;
+    font-size: 1em !important;
+  }
+
+  td:first-child:before {
+    content: "Nº ";
+  }
+
+  &:not(:empty) {
+    transition: all 0.5s ease-in-out;
+
+    &:focus-within {
+      height: fit-content;
+      min-height: 40px;
+      max-height: 85vh;
+      position: absolute;
+      z-index: 1;
+    }
+  }
+}
+
+#meuModalLoading:hover .notaPorDados:focus-within {
+  background: #ffffff !important;
+}
+
+.meuAlunoNome {
+  display: inline-block;
+  background: #ddd;
+  width: calc(99% - 35px);
+  min-width: calc(99% - 35px);
+  max-width: calc(99% - 35px);
+  height: 1.5em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transform: translateY(0.4em);
+  text-indent: 10px;
+  border-radius: 0 10px 0 0;
+}
+
+.minhaNotaAluno {
+  margin-bottom: 4px;
+
+  &:has([media="congrats"]) .meuAlunoNumber:before {
+    content: "⭐";
+    float: left;
+    display: inline;
+    height: 0;
+    width: 0;
+    left: -1em;
+    position: relative;
+  }
+
+  &:has([media="impossible"]) .meuAlunoNumber {
+    background: #f327a3 !important;
+
+    &:before {
+      content: "🟠";
+      float: left;
+      display: inline;
+      height: 0;
+      width: 0;
+      left: -1em;
+      position: relative;
+      text-shadow: 0.5px 0.5px 1px #fff, 0.5px -0.5px 1px #fff;
+    }
+  }
+}
+
+#dataAvaliacaoParcial__outer_[disabled] {
+  pointer-events: none;
+}
+
+span.meuAlunoNumber {
+  color: #fff;
+  background: #777;
+  padding: 0 5px;
+  border-radius: 3px 0 0 0;
+  display: inline-block;
+  width: 35px;
+  text-align: center;
+}
+
+.meuEncontrado {
+  line-height: 1.2em;
+  border-radius: 8px 8px 0 0;
+  color: #fff;
+  text-align: center;
+  background: #85851f;
+
+  &.ok { background: green; }
+  &.load { background: purple; }
+  &.erro { background: #7e1717; }
+}
+
+body:has(.myModalContainer select) #meuPegarNotas {
+  display: none !important;
+}
+
+.porTabelaDesc {
+  color: #fff;
+  font-size: 0.8em;
+  text-align: center;
+  text-transform: uppercase;
+  background: #666161;
+}
+
+.limparNotasContainer {
+  display: none;
+}
+
+.selectContainer select[func="selectNota"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+input[func="meuFormatNota"] {
+  -moz-appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[media="darkred"] {
+    background: #982b2b !important;
+    color: #fff !important;
+  }
+
+  &[media="impossible"] {
+    background: #f327a3 !important;
+    color: #fff !important;
+  }
+
+  &[media="red"] {
+    background: #ffc1c1 !important;
+  }
+
+  &[media="yellow"] {
+    background: #f9f9c1 !important;
+    color: #000 !important;
+  }
+
+  &[media="congrats"] {
+    background: #64a164 !important;
+    color: #fff !important;
+  }
+
+  &[value="NaN"],
+  &[value=""] {
+    background: #ff1493;
+  }
+}
+
+body:has(.notaPorDados:empty) button[func="processarDados"] {
+  pointer-events: none;
+  filter: opacity(0.5) grayscale(1);
+}
+
+
+/* ==========================================================================
+   Toasts & Notificações
+   ========================================================================== */
+
+#meuToastContainerAtestado {
+  position: fixed;
+  bottom: 20px;
+  right: 0px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.meuToastAtestado {
+  min-width: 250px;
+  max-width: 350px;
+  padding: 16px;
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: #333333;
+  animation: slideInAtestado 0.3s ease forwards, fadeOutAtestado 0.5s ease 2.7s forwards;
+
+  &.info { background-color: #344aeacc; }
+  &.success { background-color: #4caf50cd; }
+  &.error { background-color: #f44336cd; }
+}
+
+
+/* ==========================================================================
+   Botoes de Observação & Interações Complexas
+   ========================================================================== */
+
+body.procurandoT .myObsPulse:before {
+  content: "";
+  position: fixed;
+  display: block;
+  width: 200%;
+  height: 200%;
+  box-sizing: border-box;
+  margin-left: -100%;
+  margin-top: -100%;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  background-color: #ebc443de;
+  z-index: -1;
+  animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+div#atestadoButtonOthersObservacao {
+  color: #000;
+  width: 100%;
+  padding: 3px 10px;
+  border-radius: 3px;
+  margin: 5px auto !important;
+  float: left;
+
+  &:before {
+    content: "SELECIONE, SE ADEQUADO";
+    text-align: center;
+    font-size: 1em;
+    width: 100%;
+    display: block;
+    font-weight: bold;
+    color: #000;
+    border-radius: 10px 10px 0 0;
+  }
+
+  [colocadoobs] {
+    overflow: hidden;
+    word-wrap: anywhere;
+    text-overflow: ellipsis;
+    height: 1.6em;
+    white-space: nowrap;
+  }
+
+  .allButtonsObsContainer {
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: all 0.5s ease-in-out;
+
+    .allButtonsObsCatContainer {
+      border-radius: 0 0 3px 3px;
+      max-width: 25%;
+      min-width: 25%;
+      width: 25%;
+      display: inline-block;
+
+      .allButtonsObsCatContainerTitle {
+        text-transform: uppercase;
+        text-align: center;
+        cursor: pointer;
+        height: 1.5em;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow-wrap: anywhere;
+        background: #000;
+        color: #fff;
+        font-size: 0.8em;
+        padding: 0 5px;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: all 0.5s ease-in-out;
+
+        .obsIcoTit {
+          width: 1.2em;
+          float: left;
+          position: relative;
+          left: 0;
+          top: 0.1em;
+
+          i {
+            font-size: 1.3em;
+          }
+        }
+      }
+    }
+
+    div[desc] {
+      cursor: pointer;
+      font-size: 0.8em;
+      margin: 1px;
+      border: solid 1px #fff;
+      padding: 0 5px;
+      border-radius: 3px;
+      transition: all 0.5s ease-in-out;
+      filter: opacity(0.6);
+      width: 100%;
+      transform: translateX(0);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow-wrap: anywhere;
+
+      &:hover {
+        filter: opacity(1);
+        padding-left: 1em;
+        transition: all 0.5s ease-in-out;
+
+        &[colocadoobs]:before {
+          content: "❌ " !important;
+        }
+      }
+
+      &[colocadoobs] {
+        border: solid 1px #000 !important;
+        box-shadow: inset 0 0 10px black;
+        font-weight: bold;
+
+        &:before {
+          content: "⚠️";
+        }
+      }
+    }
+
+    &:has(.allButtonsObsCatContainer:hover) .allButtonsObsCatContainer:not(:hover) {
+      filter: opacity(0.4) grayscale(1);
+    }
+
+    .allButtonsObsCatContainer:hover:last-child [desc] {
+      transform: translateX(-50%) !important;
+
+      .allButtonsObsCatItem {
+        z-index: 5;
+      }
+    }
+  }
+}
+
+label[for="buttonsOthersObervacaoTempo"] {
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  float: right;
+  display: inline-flex;
+  background: transparent;
+  color: #000;
+  font-weight: bold;
+  padding: 0 5px;
+  border-radius: 3px;
+  font-size: 0.8em;
+  position: absolute;
+  right: 0;
+  top: -1em;
+
+  input {
+    display: none;
+    transition: all 0.5s ease-in-out;
+    font-size: 2em;
+    width: 0.6em;
+    border-radius: 50%;
+    margin-right: 3px;
+  }
+
+  [type="checkbox"]:not(.filled-in) + span:not(.lever):after {
+    border: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  [type="checkbox"] + span:not(.lever):before,
+  [type="checkbox"]:not(.filled-in) + span:not(.lever):after {
+    content: "";
+    position: absolute;
+    top: -0.2em;
+    left: -1.2em;
+    width: 18px;
+    height: 18px;
+    z-index: 0;
+    border: 2px solid #5a5a5a;
+    border-radius: 1px;
+    margin-top: 3px;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    background: #ffffffb3;
+  }
+
+  [type="checkbox"]:checked + span:not(.lever):before {
+    top: -0.8em;
+    left: -1.6em;
+    width: 12px;
+    height: 25px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid #26a69a;
+    border-bottom: 4px solid #26a69a;
+    -webkit-transform: rotate(40deg);
+    transform: rotate(40deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+  }
+}
+
+.allButtonsObsCatContainer {
+  &:not(:hover) .allButtonsObsCatItem:not([colocadoobs]) {
+    border: solid 0px transparent !important;
+    background: transparent !important;
+  }
+
+  &div:last-child {
+    border-radius: 3px 3px 6px 6px !important;
+    font-size: 2.7em !important;
+  }
+
+  .allButtonsObsCatItem:not([colocadoobs]) {
+    margin: 0 !important;
+    border: none;
+    height: 0;
+    font-size: 0 !important;
+
+    &[obsT="1"] { background: #151587; }
+    &[obsT="2"] { background: #800080; }
+    &[obsT="3"] { background: #9e701d; }
+    &[obsT="4"] { background: #b31111; }
+  }
+
+  &:hover {
+    padding-bottom: 1em;
+    z-index: 6 !important;
+
+    .allButtonsObsCatContainerTitle {
+      border-radius: 5px 5px 0 0 !important;
+      box-shadow: 0.5px 0.5px 5px #222;
+    }
+
+    .allButtonsObsCatItem {
+      height: 1.7em !important;
+      font-size: 1em !important;
+      width: 200% !important;
+    }
+  }
+
+  [desc]:last-child {
+    border-radius: 3px 3px 8px 8px !important;
+  }
+
+  &:has([obsT="1"]) { z-index: 4; }
+  &:has([obsT="2"]) { z-index: 3; }
+  &:has([obsT="3"]) { z-index: 2; }
+  &:has([obsT="4"]) { z-index: 1; }
+}
+
+.modal-content .modal-body:has(#atestadoButtonOthersObservacao) {
+  .obsFormSpaced {
+    margin-top: var(--pad);
+  }
+
+  #atestadoButtonOthersObservacao {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0 10px 0 10px !important;
+    width: calc(100% - 20px);
+    background: linear-gradient(135deg, #ffffff40 0%, #e9ecef 50%, #ffffff40 100%);
+    border-radius: 5px 5px 10px 10px;
+    box-shadow: 0 0.5px 5px #bbb;
+    backdrop-filter: blur(5px);
+  }
+}
+
+td .btn:has(i.fas.fa-sticky-note.btn-outline-primary) .btn-outline-primary {
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    background: transparent;
+    background-color: transparent;
+  }
+}
+
+td span i[myobscount] {
+  font-size: 2em;
+
+  &:after {
+    content: attr(myobscount);
+    float: left;
+    position: absolute;
+    font-weight: bold;
+    text-align: center;
+    background: purple;
+    border-radius: 1px 5px 5px 1px;
+    width: 1.5em;
+    left: 1.2em;
+    font-size: 0.6em;
+    color: #fff;
+  }
+}
+
+tr a.btn:has(.fas.fa-info) {
+  float: right;
+}
+
+img.myObsLogoImg {
+  width: 24px;
+  height: 24px;
+  float: left;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+/* ==========================================================================
+   Modos de Tema (Dark/Light) & Estados do Body
+   ========================================================================== */
+
+body.allOK {
+  &:not(:has(tr.atestadoLinearGradient)) div#atestadosAlunosListButton {
+    animation: none;
+
+    div {
+      width: 1.7em;
+      height: 1.7em;
+      border: solid 2px #fff;
+      background: #c3c2cbd4 !important;
+    }
+  }
+
+  &:has(tr.atestadoLinearGradient) div#atestadosAlunosListButton {
+    animation: none;
+
+    div {
+      width: 1.7em;
+      height: 1.7em;
+      background: #7fb384d4 !important;
+      border: solid 2px #fff;
+    }
+  }
+}
+
+body:has(#app.dark) {
+  label[for="buttonsOthersObervacaoTempo"] {
+    span {
+      color: #fff;
+      text-shadow: 0 0.5px 1px #212529;
+    }
+
+    [type="checkbox"]:checked + span:not(.lever):before {
+      background: #212529;
+      border-right: 2px solid #27ff00;
+      border-bottom: 4px solid #00ff2e;
+      box-shadow: 0 0.5px 1px #212529;
+    }
+  }
+
+  div#atestadoButtonOthersObservacao:before {
+    background: transparent !important;
+    color: #000;
+  }
+
+  .allButtonsObsCatContainer {
+    background: transparent !important;
+  }
+}
+
+body:not(.allOK, .procurandoT) div#atestadosAlunosListButton div {
+  background: #ed9595c4 !important;
+}
+
+body.procurandoT div#atestadosAlunosListButton div {
+  background: #6e6c6cad !important;
+}
+
+body:has(#buttonsOthersObervacaoTempo:checked) .allButtonsObsCatItem[tempo]:not([colocadoobs]):after,
+.allButtonsObsCatItem[tempo][colocadoobs][comTempo]:after {
+  content: "🕐";
+  position: relative;
+  float: right;
+  right: 0.9em;
+  width: 0;
+}
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media screen and (max-width: 400px) {
+  div.atestadoSlideAlunosTable.atestadoSlideButton {
+    display: none !important;
+  }
+
+  div.atestadoSlideAlunosTable {
+    filter: opacity(0.8);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #atestadosAlunosListButton,
+  #meuPegarNotas,
+  #oButtonUmaNotas,
+  #meuPegarListaParaSheets {
+    display: none !important;
+  }
 }
